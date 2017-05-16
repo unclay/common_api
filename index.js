@@ -19,7 +19,7 @@ const setCache = (key, options) => {
 
   const expire = options.expire || 12 * 3600;
 
-  const keyValue = '';
+  let keyValue = '';
   for (const item of cache) {
     if (item.key === key) {
       keyValue = item;
@@ -66,7 +66,6 @@ const handle = (req, res, next) => {
   if (!url) {
     return res.send([]);
   }
-
   superagent
     .get(url)
     .query(body)
